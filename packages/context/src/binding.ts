@@ -286,7 +286,9 @@ export class Binding {
   }
 
   /**
-   * Bind the key to a BindingProvider
+   * Bind the key to a Provider class
+   *
+   * @param provider - the class constructor of a value provider
    */
   public toProvider<T>(providerClass: Constructor<Provider<T>>): this {
     this._getValue = ctx => {
