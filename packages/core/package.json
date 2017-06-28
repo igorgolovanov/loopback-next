@@ -37,7 +37,8 @@
     "index.js",
     "index.d.ts",
     "lib",
-    "lib6"
+    "lib6",
+    "api-docs"
   ],
   "repository": {
     "type": "git",
