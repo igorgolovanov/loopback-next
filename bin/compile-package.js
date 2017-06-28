@@ -70,5 +70,3 @@ spawn(
     stdio: 'inherit',
   }
 ).on('close', (number, signal) => (process.exitCode = number));
-
-
