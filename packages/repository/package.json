@@ -5,10 +5,10 @@
   "main": "index",
   "scripts": {
     "acceptance": "mocha --opts ../../test/mocha.opts 'test/acceptance/**/*.ts'",
-    "build": "npm run build:lib && npm run build:lib6 && npm run build:sdocs",
+    "build": "npm run build:lib && npm run build:lib6 && npm run build:apidocs",
     "build:lib": "node ../../bin/compile-package es2017",
     "build:lib6": "node ../../bin/compile-package es2015",
-    "build:sdocs": "node ../../bin/generate-apidocs",
+    "build:apidocs": "node ../../bin/generate-apidocs",
     "clean": "rm -rf loopback-context*.tgz lib* package",
     "prepublish": "npm run build",
     "pretest": "npm run build",
