@@ -3,12 +3,12 @@
   "version": "4.0.0-alpha.6",
   "description": "TypeScript type definitions for OpenAPI Spec/Swagger documents.",
   "scripts": {
-    "build": "npm run build:lib && npm run build:lib6 && npm run build:apidocs",
+    "build": "npm run build:lib && npm run build:lib6",
     "build:lib": "node ../../bin/compile-package es2017",
     "build:lib6": "node ../../bin/compile-package es2015",
     "build:apidocs": "node ../../bin/generate-apidocs",
     "clean": "rm -rf loopback-openapi-spec*.tgz lib* package",
-    "prepublish": "npm run build",
+    "prepublish": "npm run build && npm run build:apidocs",
     "verify": "npm pack && tar xf loopback-openapi-spec*.tgz && tree package && npm run clean"
   },
   "author": "IBM",
