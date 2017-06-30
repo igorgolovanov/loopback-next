@@ -4,6 +4,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import {
+  ExtensionValue,
   OpenApiSpec,
   OperationObject,
   ResponseObject,
@@ -79,6 +80,17 @@ export class OpenApiSpecBuilder {
   }
 
   /**
+   * Add a custom (extension) property to the operation definition.
+   *
+   * @param key The property name starting with "x-".
+   * @param value The property value.
+   */
+  withExtension(key: string, value: ExtensionValue): this {
+    this._spec[key] = value;
+    return this;
+  }
+
+  /**
    * Build the OpenApiSpec object.
    */
   build(): OpenApiSpec {
@@ -132,7 +144,17 @@ export class OperationSpecBuilder {
    * @param name The name of the controller method implementing this operation.
    */
   withOperationName(name: string): this {
-    this._spec['x-operation-name'] = name;
+    return this.withExtension('x-operation-name', name);
+  }
+
+  /**
+   * Add a custom (extension) property to the operation definition.
+   *
+   * @param key The property name starting with "x-".
+   * @param value The property value.
+   */
+  withExtension(key: string, value: ExtensionValue): this {
+    this._spec[key] = value;
     return this;
   }
 

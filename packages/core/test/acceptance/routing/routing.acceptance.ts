@@ -221,6 +221,25 @@ describe('Routing', () => {
     await client.get('/greet?name=world').expect(200, 'hello world');
   });
 
+  it('supports routes declared via API specification', async () => {
+    const app = givenAnApplication();
+
+    function greet(name: string) {
+      return `hello ${name}`;
+    }
+
+    const spec = anOpenApiSpec()
+      .withOperation('get', '/greet', anOperationSpec()
+        .withParameter({name: 'name', in: 'query', type: 'string'})
+        .withExtension('x-operation', greet))
+      .build();
+
+    app.api(spec);
+
+    const client = await whenIMakeRequestTo(app);
+    await client.get('/greet?name=world').expect(200, 'hello world');
+  });
+
   /* ===== HELPERS ===== */
 
   function givenAnApplication() {
